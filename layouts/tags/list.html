@@ -1,0 +1,29 @@
+{{ define "main" }} 
+  {{- if eq .RelPermalink "/tags/" -}} 
+    <div class="siteTitle">
+      <h1>
+        Tags
+      </h1>
+    </div>
+    <div class="tag-page-list">
+    {{- range $.Site.Taxonomies.tags.ByCount -}}
+      <a href="/tags/{{ .Name }}">
+        <span class="tag">{{ .Name }} <small>({{.Count}})</small></span>
+      </a>
+    {{- end -}}
+    </div>
+  {{- else -}}
+    <h1>{{ .Title }}</h1>
+    {{ $paginator := .Paginate (.Pages) }}
+    {{ range $paginator.Pages }}
+      <h2>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ .Summary }}
+      {{ if .Truncated }}
+        <a class="moreLink" href="{{ .RelPermalink }}"> Read more &#x2b95; </a>
+      {{ end }}
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
+  {{- end -}} 
+{{- end -}}

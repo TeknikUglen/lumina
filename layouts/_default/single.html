@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  {{ $dateString := "0" }}
+  {{ $dateMachine := "" }}
+  {{ $dateHuman := "" }}
+  {{- if .Params.Lastmod -}} 
+    {{ $dateMachine = .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman = .Lastmod | time.Format ":date_long" }}
+    {{ $dateString = printf "Updated on: %s" $dateHuman }}
+  {{- else -}}
+    {{ $dateMachine = .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman = .Date | time.Format ":date_long" }}
+    {{ $dateString = printf "Created on: %s" $dateHuman }}
+  {{- end -}}
+
+  <time datetime="{{ $dateMachine }}">&#x1F4C5; {{ $dateString  }}</time>
+
+  {{ .Content }}
+  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+{{ end }}

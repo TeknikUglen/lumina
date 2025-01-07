@@ -1,0 +1,6 @@
+{{- with resources.Get "img/logo.png" }}
+<a href="/"><img src="{{ .RelPermalink }}"></a>
+{{- end }}
+
+<h1>{{ site.Title }}</h1>
+

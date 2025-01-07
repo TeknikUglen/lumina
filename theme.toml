@@ -1,0 +1,18 @@
+name = 'Lumina'
+license = 'ISC'
+licenselink = 'https://github.com/TeknikUglen/lumina/LICENSE.md'
+description = 'A simple Hugo theme for a Wiki like site.'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/TeknikUglen/lumina'
+
+# Taxonomy terms
+tags = ['wiki', 'light', 'simple', 'minimalist']
+features = ['wiki', 'no menu']
+
+# If the theme has a single author
+[author]
+  name = 'Rene Rasmussen'
+  homepage = 'https://teknikuglen.com'
+
+min_version = '0.126.1'

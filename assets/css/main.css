@@ -1,0 +1,240 @@
+:root {
+  --bgClrDark: #333;
+  --txtColor: #333;
+  --txtClrLight: #fff;
+  --borderClr: #ddd;
+  --paginationHover: #099627;
+  --paginationDisabled: #888;
+  --tableBorder: #888;
+  --tableHead: #84daff;
+  --tableHeadColor: #333;
+  --taxanomyBg: #333;
+  --taxanomyBgHover: #099627;
+  --taxanomyBorder: #ddd;
+  --taxanomyColor: #fff;
+  --linkColor: #00e;
+  --codeBgClr: #eee;
+}
+
+body {
+  color: var(--txtClr);
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin: 1rem;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+header {
+  border-bottom: 1px solid var(--bgClrDark);
+  margin-bottom: 1rem;
+  display: flex;
+}
+header img {
+  margin: 0;
+  width: 3em;
+  height: 3em;
+  margin-right: 1em;
+}
+header h1 {
+  margin: 0;
+}
+
+footer {
+  border-top: 1px solid var(--bgClrDark);
+  margin-top: 1rem;
+}
+
+a {
+  color: var(--linkColor);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.ext-link {
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+/* main page grid of link items */
+.inner-tag-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row;
+  gap: 2em;
+  margin-top: 5px;
+  padding: 0;
+}
+.tag-item-list {
+  padding-inline: 10px;
+  min-width: 10em;
+}
+.tag-item-list ul {
+  list-style: none;
+  padding: 0;
+}
+.tag-item-list h2 {
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 1024px) {
+  .inner-tag-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 780px) {
+  .inner-tag-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 480px) {
+  .inner-tag-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* tags list on single post pages */
+.taxanomy {
+  margin-top: 3em;
+  font-size: 0.8em;
+}
+.taxanomy ul, .tag-page-list {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  padding: 0;
+}
+.taxanomy a, .tag-page-list a {
+  color: var(--taxanomyColor);
+  text-decoration: none;
+  padding: 3px 8px 3px 8px;
+  background-color: var(--taxanomyBg);
+  border: 1px solid var(--taxanomyBorder);
+  border-top-left-radius: 5px;
+}
+.taxanomy a:hover, .tag-page-list a:hover {
+  background-color: var(--taxanomyBgHover);
+}
+.moreLink {
+  display: block;
+}
+
+
+/* other */
+.highlight pre {
+  font-size: 1.2em;
+  padding: 0.8em 0.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  white-space: pre;
+  overflow: auto;
+}
+p code {
+  background-color: var(--codeBgClr);
+  padding-inline: 7px;
+  font-size: 1.2em;
+}
+
+/* Admonitions */
+note,
+warning,
+success,
+error {
+	display: block;
+	white-space: pre-wrap;
+	padding: 20px 20px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	width: calc(100%-1px);
+}
+note {
+	background-color: #448aff1a;
+	border: 1px solid #448aff;
+	border-left: 8px solid #448aff;
+	color: black;
+}
+warning {
+	background-color: #ff91001a;
+	border: 1px solid #ff9100;
+	border-left: 8px solid #ff9100;
+	color: black;
+}
+success {
+	background-color: #64dd171a;
+	border: 1px solid #64dd17;
+	border-left: 8px solid #64dd17;
+	color: black;
+}
+error {
+	background-color: #ff52521a;
+	border: 1px solid #ff5252;
+	border-left: 8px solid #ff5252;
+	color: black;
+}
+
+
+/* tables */
+main table {
+  margin-block: 1.5em;
+  border-collapse: collapse;
+}
+main table thead tr {
+  color: var(--tableHeadColor);
+  background-color: var(--tableHead);
+}
+main table td, th {
+  border-block: 1px solid var(--tableBorder);
+  padding-block: 5px;
+  padding-inline: 12px;
+}
+
+
+/* pagination style */
+.pagination{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding: 0;
+  margin: 0;
+  margin-top: 2em;
+}
+.pagination li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pagination li a {
+  text-decoration: none;
+}
+.page-item{
+  border: 1px solid var(--borderClr);
+  width: 2.5em;
+  height: 2.3em;
+  border-radius: 5px;
+  background-color: var(--bgClrDark);
+  color: var(--txtClrLight);
+  margin: 0;
+  padding: 0;
+}
+.page-link {
+  display: block;
+  color: inherit;
+  line-height: 2.3em;
+  text-align: center;
+}
+.page-item:hover {
+  background-color: var(--paginationHover);
+}
+.page-item.active:hover{
+  background-color: var(--paginationDisabled);
+}
+.page-item.disabled, .page-item.active {
+  background-color: var(--paginationDisabled);
+  color: var(--borderClr);
+  cursor: not-allowed;
+}

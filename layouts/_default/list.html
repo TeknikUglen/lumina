@@ -1,0 +1,10 @@
+{{ define "main" }}
+  {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+
+  {{ range $paginator.Pages }}
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ .Summary }}
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+{{ end }}
