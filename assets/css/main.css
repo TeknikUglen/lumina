@@ -103,6 +103,7 @@ a:hover {
 .taxanomy ul, .tag-page-list {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 2em;
   padding: 0;
 }
@@ -113,6 +114,7 @@ a:hover {
   background-color: var(--taxanomyBg);
   border: 1px solid var(--taxanomyBorder);
   border-top-left-radius: 5px;
+  white-space: nowrap;
 }
 .taxanomy a:hover, .tag-page-list a:hover {
   background-color: var(--taxanomyBgHover);

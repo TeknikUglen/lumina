@@ -8,7 +8,7 @@
     <div class="tag-page-list">
     {{- range $.Site.Taxonomies.tags.ByCount -}}
       <a href="/tags/{{ .Name }}">
-        <span class="tag">{{ .Name }} <small>({{.Count}})</small></span>
+        <span>{{ .Name }} </span><small>({{.Count}})</small>
       </a>
     {{- end -}}
     </div>
