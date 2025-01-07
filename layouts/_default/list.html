@@ -4,6 +4,10 @@
   {{ range $paginator.Pages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
+    {{ if .Truncated }}
+        <a class="moreLink" href="{{ .RelPermalink }}"> Read more &#x2b95; </a>
+    {{ end }}
+
   {{ end }}
 
   {{ template "_internal/pagination.html" . }}
