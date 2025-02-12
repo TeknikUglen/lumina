@@ -147,7 +147,8 @@ p code {
 note,
 warning,
 success,
-error {
+error,
+info {
 	display: block;
 	white-space: pre-wrap;
 	padding: 20px 20px;
@@ -180,6 +181,12 @@ error {
 	background-color: #ff52521a;
 	border: 1px solid #ff5252;
 	border-left: 8px solid #ff5252;
+	color: black;
+}
+info {
+  background-color: #fafa331a;
+	border: 1px solid #fafa33;
+	border-left: 8px solid #fafa33;
 	color: black;
 }
 
