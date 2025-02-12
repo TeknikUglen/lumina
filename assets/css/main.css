@@ -125,7 +125,11 @@ a:hover {
 
 
 /* other */
-.highlight pre {
+pre {
+  border: 1px solid var(--borderClr);
+  background-color: var(--codeBgClr);
+}
+.highlight pre, pre {
   font-size: 1.2em;
   padding: 0.8em 0.5em;
   margin-top: 1.5em;
