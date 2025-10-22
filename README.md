@@ -7,23 +7,23 @@ Simplistic wiki-like theme for Hugo
 
 ## Features
 
-- Landing page listing all posts sorted according to tags. Posts with multiple tags are listed multiple times.
-- meta category with "posts" and "tags" link is automatically added to the landing page. It would make sense to not use "meta" as a tag for any posts, as this would display the "meta" group twice.
-- There is no menu displayed.
-- Footer is set automatically from the site title and current year. 
-- Setting `yearStart` in the `hugo.toml` file causes a from year to appear in the footer.
-- External links are marked with 🔗 in both the footer and the post content and will open in a new tab/window.
-- Admonitions can be added using the html tags `note`, `warning`, `error`, `success`. Please note unsafe content needs to be allowed. See settings section for details.
+- **Landing page:** Lists all posts sorted by tags. Posts with multiple tags appear in each relevant tag section.
+- A **meta** category with links to "posts" and "tags" is automatically added to the landing page. It's best not use "meta" as a tag for posts, as this would cause the "meta" group to appear twice.
+- No menu is displayed.
+- The **footer** is automatically generated using the site title and current year. 
+- Setting `yearStart` in the `hugo.toml` file adds a starting year to the footer.
+- **External links** are marked with 🔗 in both the footer and post content, and open in a new tab or window.
+- **Admonitions** can be added using the HTML tags `<note>`, `<warning>`, `<error>` and `<success>`. Note that unsafe content must be allowed - see the *settings* section for details.
 
 ## Admonitions
 
-Easily added to posts just using the simple html tags. See example below.
+Admonitions can be easily added to posts using simple HTML tags. See the example below:
 
 ```html
 <note>This is a note</note>
 ```
 
-Please note admonitions need unsafe content to be enabled. See settings section for details.
+Note that admonitions require unsafe content to be enabled. See the *Settings* section for details.
 
 ## Screenshots
 
@@ -47,7 +47,7 @@ Please note admonitions need unsafe content to be enabled. See settings section 
 
 ## Installation
 
-Place theme files in the themes folder and set `hugo.toml` to use it with 
+Add the theme files to your themes directory, then enable it in your `hugo.toml` file with:
 
 ```toml
 theme = 'lumina'
@@ -57,7 +57,7 @@ theme = 'lumina'
 
 ### Footer
 
-The footer default contains only the current year but setting yearStart in the `hugo.toml` file to your desired starting year will change the output to have both years in the format yearStart-currentYear (2006-2024).
+By default, the footer displays only the current year. However, if you set the `yearStart` parameter in the `hugo.toml` file to your desired starting year, the footer will show a range in the format `yearStart–currentYear` (e.g., `2006–2024`).
 
 ```toml
 [params]
@@ -66,7 +66,7 @@ yearStart = ""
 
 ### Date format
 
-This setting will define the date format used in the posts output.
+This setting defines the format used to display dates in your posts.
 
 ```toml
 [params]
@@ -75,11 +75,11 @@ dateFormat = "Jan 2, 2006"
 
 ### Admonitions
 
-To use the admonitions the settings need to include the following snippet. 
+To enable admonitions, include the following snippet in your configuration:
 
 ```toml
 [markup.goldmark.renderer]
-unsafe= true
+unsafe = true
 ```
 
-Make sure you understand the implications of enabling this! If you are in control of all content it's not a problem, otherwise it could be used to inject malicious html into your posts. (only before the site is build).
+Be aware of the security implications of this setting. Enabling `unsafe` allows raw HTML to be rendered, which can pose a risk if you don’t control all site content — malicious HTML could be injected into posts *before* the site is built. If you manage all the content yourself, this setting is generally safe to use.

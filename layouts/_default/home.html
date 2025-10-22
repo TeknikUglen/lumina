@@ -1,8 +1,21 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
-  HOME
+  <div class="inner-tag-list">
+    {{ range $tag, $pages := .Site.Taxonomies.tags }}
+    <div class="tag-item-list">
+      <h2>{{ $tag | strings.FirstUpper }}</h2>
+      <ul>
+        {{ range $pages }}
+          <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    <div class="tag-item-list">
+      <h2>Meta</h2>
+      <ul>
+        <li><a href="posts">Posts</a></li>
+        <li><a href="tags">Tags</a></li>
+      </ul>
+    </div>
+  </div>
 {{ end }}
