@@ -1,14 +1,22 @@
 {{ define "main" }}
   {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+  {{ $pages := $paginator.Pages }}
+  {{ $lastIndex := sub (len $pages) 1 }}
+  {{ $showBottomHr := gt $paginator.TotalPages 1 }}
 
-  {{ range $paginator.Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-    {{ if .Truncated }}
-        <a class="moreLink" href="{{ .RelPermalink }}"> Read more &#x2b95; </a>
+  {{ range $i, $page := $pages }}
+    {{ if gt $i 0 }}
+      <hr>
     {{ end }}
-
-  {{ end }}
-
-  {{ template "_internal/pagination.html" . }}
+    <h2><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h2>
+    {{ $page.Content | plainify | truncate 150 }}
+      {{ if $page.Truncated }}
+        <a class="moreLink" href="{{ $page.RelPermalink }}"> Read more &#x2b95; </a>
+      {{ end }}
+      {{ partial "terms_lite.html" (dict "taxonomy" "tags" "page" .) }}
+      {{ if and $showBottomHr (eq $i $lastIndex) }}
+        <hr>
+      {{ end }}
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
 {{ end }}

@@ -100,14 +100,18 @@ a:hover {
   margin-top: 3em;
   font-size: 0.8em;
 }
-.taxanomy ul, .tag-page-list {
+.taxanomy ul,
+.taxanomy_lite ul,
+.tag-page-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
   padding: 0;
 }
-.taxanomy a, .tag-page-list a {
+.taxanomy a,
+.taxanomy_lite a,
+.tag-page-list a {
   color: var(--taxanomyColor);
   text-decoration: none;
   padding: 3px 8px 3px 8px;
@@ -116,13 +120,23 @@ a:hover {
   border-top-left-radius: 5px;
   white-space: nowrap;
 }
-.taxanomy a:hover, .tag-page-list a:hover {
+.taxanomy a:hover,
+.taxanomy_lite a:hover,
+.tag-page-list a:hover {
   background-color: var(--taxanomyBgHover);
 }
 .moreLink {
   display: block;
 }
 
+/* tags list on posts page (overrides) */
+.taxanomy_lite {
+  margin-top: 1em;
+  font-size: 0.8em;
+}
+.taxanomy_lite ul {
+  gap: 0.5em;
+}
 
 /* other */
 pre {

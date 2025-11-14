@@ -7,21 +7,30 @@
     </div>
     <div class="tag-page-list">
     {{- range $.Site.Taxonomies.tags.ByCount -}}
-      <a href="/tags/{{ .Name }}">
+      <a href="{{ .Page.RelPermalink }}">
         <span>{{ .Name }} </span><small>({{.Count}})</small>
       </a>
     {{- end -}}
     </div>
   {{- else -}}
     <h1>{{ .Title }}</h1>
-    {{ $paginator := .Paginate (.Pages) }}
-    {{ range $paginator.Pages }}
+    {{ $paginator := .Paginate .Pages }}
+    {{ $pages := $paginator.Pages }}
+    {{ $lastIndex := sub (len $pages) 1 }}
+    {{ $showBottomHr := gt $paginator.TotalPages 1 }}
+    {{ range $i, $page := $pages }}
+      {{ if gt $i 0 }}
+        <hr>
+      {{ end }}
       <h2>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
       </h2>
-      {{ .Summary }}
-      {{ if .Truncated }}
-        <a class="moreLink" href="{{ .RelPermalink }}"> Read more &#x2b95; </a>
+      {{ $page.Content | plainify | truncate 150 }}
+      {{ if $page.Truncated }}
+        <a class="moreLink" href="{{ $page.RelPermalink }}"> Read more &#x2b95; </a>
+      {{ end }}
+      {{ if and $showBottomHr (eq $i $lastIndex) }}
+        <hr>
       {{ end }}
     {{ end }}
     {{ template "_internal/pagination.html" . }}
