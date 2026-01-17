@@ -4,7 +4,7 @@
     <div class="tag-item-list">
       <h2>{{ $tag | strings.FirstUpper }}</h2>
       <ul>
-        {{ range $pages }}
+        {{ range sort $pages ".Page.Title" "asc" }}
           <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
         {{ end }}
       </ul>
